@@ -10,6 +10,7 @@ const longCount = document.querySelector('#long-count')
 const pomodoroLink = document.querySelector('#pomodoro-link')
 const shortBreakLink = document.querySelector('#short-break-link')
 const longBreakLink = document.querySelector('#long-break-link')
+const link = document.querySelector('#link')
 const pomoWrapper = document.querySelector('.pomodoro')
 const shortWrapper = document.querySelector('.short-break')
 const longWrapper = document.querySelector('.long-break')
@@ -22,10 +23,8 @@ pomodoroLink.addEventListener('click', () => {
     pomoWrapper.style.display = 'block'
     shortWrapper.style.display = 'none'
     longWrapper.style.display = 'none'
-    pomodoroLink.setAttribute('data', 'active')
-    shortBreakLink.removeAttribute('data')
-    longBreakLink.removeAttribute('data')
-    pomoStartingMinute = 1
+    localStorage.setItem('active-link', 'pomodoro')
+    pomoStartingMinute = 3
     pomoSecon = (pomoStartingMinute * 60) -1
     pomoCount.innerHTML = `${pomoStartingMinute < 10 ? '0' + pomoStartingMinute : pomoStartingMinute} : 00`
     clearInterval(interval)
@@ -33,39 +32,74 @@ pomodoroLink.addEventListener('click', () => {
     pomoPauseBtn.style.display = 'none'
     localStorage.removeItem('pomo-minute')
     localStorage.removeItem('pomo-second')
+    if(localStorage.getItem('active-link') === 'pomodoro'){
+        pomodoroLink.setAttribute('data', 'active')
+        shortBreakLink.removeAttribute('data')
+        longBreakLink.removeAttribute('data')
+    }
 })
 
 shortBreakLink.addEventListener('click', () => {
     pomoWrapper.style.display = 'none'
     shortWrapper.style.display = 'block'
     longWrapper.style.display = 'none'
-    shortBreakLink.setAttribute('data', 'active')
-    longBreakLink.removeAttribute('data')
-    pomodoroLink.removeAttribute('data')
+    localStorage.setItem('active-link', 'short-break')
     shortStartingMinute = 5
     shortSecond = (shortStartingMinute * 60) -1
     shortCount.innerHTML = `${shortStartingMinute < 10 ? '0' + shortStartingMinute : shortStartingMinute} : 00`
     clearInterval(interval)
+    if(localStorage.getItem('active-link') === 'short-break'){
+        pomodoroLink.removeAttribute('data')
+        shortBreakLink.setAttribute('data', 'active')
+        longBreakLink.removeAttribute('data')
+    }
 })
 
 longBreakLink.addEventListener('click', () => {
     pomoWrapper.style.display = 'none'
     shortWrapper.style.display = 'none'
     longWrapper.style.display = 'block'
-    longBreakLink.setAttribute('data', 'active')
-    pomodoroLink.removeAttribute('data')
-    shortBreakLink.removeAttribute('data')
+    localStorage.setItem('active-link', 'long-break')
     longStartingMinute = 15
     longSecond = (longStartingMinute * 60) -1
     longCount.innerHTML = `${longStartingMinute < 10 ? '0' + longStartingMinute : longStartingMinute} : 00`
     clearInterval(interval)
+    if(localStorage.getItem('active-link') === 'long-break'){
+        pomodoroLink.removeAttribute('data')
+        shortBreakLink.removeAttribute('data')
+        longBreakLink.setAttribute('data', 'active')
+    }
 })
 
-let pomoStartingMinute = 1
-let pomoSecon = (pomoStartingMinute * 60) -1
+if(localStorage.getItem('active-link') === 'pomodoro'){
+    pomodoroLink.setAttribute('data', 'active')
+    pomoWrapper.style.display = 'block'
+    shortWrapper.style.display = 'none'
+    longWrapper.style.display = 'none'
+}
+else if(localStorage.getItem('active-link') === 'short-break'){
+    shortBreakLink.setAttribute('data', 'active')
+    shortWrapper.style.display = 'block'
+    pomoWrapper.style.display = 'none'
+    longWrapper.style.display = 'none'
+}
+else if(localStorage.getItem('active-link') === 'long-break'){
+    longBreakLink.setAttribute('data', 'active')
+    longWrapper.style.display = 'block'
+    pomoWrapper.style.display = 'none'
+    shortWrapper.style.display = 'none'
+}
+else {
+    pomodoroLink.setAttribute('data', 'active')
+    pomoWrapper.style.display = 'block'
+    shortWrapper.style.display = 'none'
+    longWrapper.style.display = 'none'
+}
 
+let pomoStartingMinute = 3
+let pomoSecon = localStorage.getItem('overall-pomo-second') ? +localStorage.getItem('overall-pomo-second')-1 : (pomoStartingMinute * 60) -1
 
-if(localStorage.getItem('pomo-minute') != '01' && localStorage.getItem('pomo-second') != '00'){
+if(localStorage.getItem('pomo-minute')  && localStorage.getItem('pomo-second') ){
     pomoCount.removeAttribute('data-timer')
     console.log('true');
     pomoCount.innerHTML = `${localStorage.getItem('pomo-minute')} : ${localStorage.getItem('pomo-second')}`
@@ -77,19 +111,23 @@ else {
 
 if(localStorage.getItem('pomo-minute') === null) {
     pomoCount.innerHTML = `${pomoStartingMinute < 10 ? '0' + pomoStartingMinute : pomoStartingMinute} : 00`
-    console.log(1);
 }
 
 console.log(localStorage.getItem('pomo-minute'));
 
 let interval;
 let number = 0
+if(localStorage.getItem('focus-number')){
+    number = localStorage.getItem('focus-number')
+}
+else{
+    number = 0
+}
 
 // focus numbers
 focusNumberInShortBreak.innerHTML = localStorage.getItem('focus-number') ? `#${localStorage.getItem('focus-number')}` : '#0'
-focusNumber.innerHTML = localStorage.getItem('focus-number') ? `#${+localStorage.getItem('focus-number') +1}` : '#1'
 focusNumberInLongBreak.innerHTML = localStorage.getItem('focus-number') ? `#${localStorage.getItem('focus-number')}` : '#0'
-
+focusNumber.innerHTML = localStorage.getItem('focus-number') ? `#${+localStorage.getItem('focus-number') +1}` : '#1'
 // pomodoro start
 pomodoroStartBtn.addEventListener('click', () => {
     pomodoroStartBtn.style.display = 'none'
@@ -105,7 +143,8 @@ pomodoroStartBtn.addEventListener('click', () => {
             second = second < 10 ? '0' + second : second
             minute = minute < 10 ? '0' + minute : minute
             // console.log(second);
-    
+            
+            localStorage.setItem('overall-pomo-second', pomoSecon)
             localStorage.setItem('pomo-minute', minute)
             localStorage.setItem('pomo-second', second)
         
@@ -117,19 +156,24 @@ pomodoroStartBtn.addEventListener('click', () => {
             }
 
             if(minute == 0 && second == 0) {
+                number++
                 pomoWrapper.style.display = 'none'
                 shortWrapper.style.display = 'block'
+                localStorage.setItem('active-link', 'short-break')
                 pomodoroLink.removeAttribute('data')
                 shortBreakLink.setAttribute('data', 'active')
-                number++
                 localStorage.setItem('focus-number', number)
                 if(number % 4 == 0) {
                     longWrapper.style.display = 'block'
                     shortWrapper.style.display = 'none'
                     shortBreakLink.removeAttribute('data')
                     longBreakLink.setAttribute('data', 'active')
+                    localStorage.setItem('active-link', 'long-break')
                 }
             }
+            focusNumberInShortBreak.innerHTML = localStorage.getItem('focus-number') ? `#${localStorage.getItem('focus-number')}` : '#0'
+            focusNumberInLongBreak.innerHTML = localStorage.getItem('focus-number') ? `#${localStorage.getItem('focus-number')}` : '#0'
+            focusNumber.innerHTML = localStorage.getItem('focus-number') ? `#${+localStorage.getItem('focus-number') +1}` : '#1'
             pomoCount.innerHTML = `${localStorage.getItem('pomo-minute')} : ${localStorage.getItem('pomo-second')}`
         },
         1000
@@ -146,8 +190,23 @@ pomoPauseBtn.addEventListener('click', () => {
 
 
 
-let shortStartingMinute = 5
-let shortSecond = (shortStartingMinute * 60) -1
+let shortStartingMinute = 3
+let shortSecond = localStorage.getItem('overall-short-second') ? +localStorage.getItem('overall-short-second')-1 : (shortStartingMinute * 60) -1
+
+
+if(localStorage.getItem('short-minute')  && localStorage.getItem('short-second') ){
+    shortCount.removeAttribute('data-timer')
+    console.log('true');
+    shortCount.innerHTML = `${localStorage.getItem('short-minute')} : ${localStorage.getItem('short-second')}`
+}
+
+else {
+    shortCount.innerHTML = `${shortStartingMinute < 10 ? '0' + shortStartingMinute : shortStartingMinute} : 00`
+}
+
+if(localStorage.getItem('pomo-minute') === null) {
+    pomoCount.innerHTML = `${pomoStartingMinute < 10 ? '0' + pomoStartingMinute : pomoStartingMinute} : 00`
+}
 
 if(shortCount.getAttribute('data-timer')) {
     shortCount.innerHTML = `${shortStartingMinute < 10 ? '0' + shortStartingMinute : shortStartingMinute} : 00`
@@ -166,6 +225,7 @@ shortBreakStartBtn.addEventListener('click', () => {
         minute = minute < 10 ? '0' + minute : minute
         console.log(second);
 
+        localStorage.setItem('overall-short-second', shortSecond)
         localStorage.setItem('short-minute', minute)
         localStorage.setItem('short-second', second)
     
@@ -189,7 +249,21 @@ shortPauseBtn.addEventListener('click', () => {
 })
 
 let longStartingMinute = 15
-let longSecond = (longStartingMinute * 60) -1
+let longSecond = localStorage.getItem('overall-long-second') ? +localStorage.getItem('overall-long-second')-1 : (longStartingMinute * 60) -1
+
+if(localStorage.getItem('long-minute')  && localStorage.getItem('long-second') ){
+    longCount.removeAttribute('data-timer')
+    console.log('true');
+    longCount.innerHTML = `${localStorage.getItem('long-minute')} : ${localStorage.getItem('long-second')}`
+}
+
+else {
+    longCount.innerHTML = `${longStartingMinute < 10 ? '0' + longStartingMinute : longStartingMinute} : 00`
+}
+
+if(localStorage.getItem('long-minute') === null) {
+    longCount.innerHTML = `${longStartingMinute < 10 ? '0' + longStartingMinute : longStartingMinute} : 00`
+}
 
 if(longCount.getAttribute('data-timer')) {
     longCount.innerHTML = `${longStartingMinute < 10 ? '0' + longStartingMinute : longStartingMinute} : 00`
@@ -208,6 +282,7 @@ longBreakStartBtn.addEventListener('click', () => {
         minute = minute < 10 ? '0' + minute : minute
         console.log(second);
 
+        localStorage.setItem('overall-long-second', longSecond)
         localStorage.setItem('long-minute', minute)
         localStorage.setItem('long-second', second)
     
@@ -228,3 +303,4 @@ longPauseBtn.addEventListener('click', () => {
     longBreakStartBtn.style.display = 'inline-block'
     longPauseBtn.style.display = 'none'
 })
+

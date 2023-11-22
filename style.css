@@ -89,6 +89,8 @@ nav button {
 .timers a {
     font-size: 20px;
     font-weight: 400;
+    padding: 4px 15px;
+    transition: 0.2s;
 }
 
 .timer {
@@ -98,7 +100,6 @@ nav button {
 
 a[data = active] {
     background-color: rgba(0, 0, 0, 0.169);
-    padding: 4px 15px;
     border-radius: 4px;
 }
 
@@ -118,14 +119,6 @@ a[data = active] {
     /* letter-spacing: 2px; */
     padding: 12px 55px;
     border-radius: 5px;
-}
-
-.short-break {
-    display: none;
-}
-
-.long-break {
-    display: none;
 }
 
 #pomodoro-pause {
