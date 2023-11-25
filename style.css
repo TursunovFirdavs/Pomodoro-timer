@@ -5,12 +5,12 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  color: #fff;
+  /* color: #fff; */
 }
 
 body {
-  background-color: rgb(186,73,73);
-  /* background-color: dodgerblue; */
+  /* background-color: rgb(186,73,73); */
+  transition: 0.8s;
 }
 
 .link, a {
@@ -56,6 +56,7 @@ nav button {
     border-radius: 5px;
     background-color: #faf7f71c;
     color: #fff;
+    cursor: pointer;
 }
 
 .login {
@@ -69,6 +70,7 @@ nav button {
 .categories {
     max-width: 550px;
     margin: auto;
+    color: #fff;
     background-color: #faf7f71c;
     padding: 30px 0;
     text-align: center;
@@ -113,10 +115,9 @@ a[data = active] {
 .start {
     border: none;
     background-color: #fff;
-    color: rgb(186,73,73);
+    /* color: rgb(186,73,73); */
     font-size: 32px;
     font-weight: 500;
-    /* letter-spacing: 2px; */
     padding: 12px 55px;
     border-radius: 5px;
 }
@@ -154,3 +155,160 @@ a[data = active] {
     gap: 5px;
 }
 
+
+/* settings */
+
+.setting-container {
+    display: none;
+    max-width: 100vw;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.185);
+    position: absolute;
+    top: 0;
+}
+
+.settings-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-60%);
+    background-color: #fff;
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.settings-bg {
+    position: absolute;
+    top: 0;
+    max-width: 100vw;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.settings-wrapper h3 {
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 17px;
+}
+
+.settings {
+    display: flex;
+    align-items:flex-start;
+    justify-content: space-between;
+    height: 45px;
+    font-size: 20px;
+    color: rgb(71, 70, 70);
+    /* padding-bottom: 20px; */
+    border-bottom: 1px solid rgb(197, 194, 194);
+}
+
+.settings p {
+    font-weight: 500;
+}
+
+.settings i {
+    font-size: 25px;
+    transition: 0.15s;
+}
+
+.settings i:hover {
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.settings_timer-title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgb(184, 182, 182);
+    padding: 20px 0;
+}
+
+.settings_text{
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+}
+
+.settings_timers {
+    /* max-width: 100%; */
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(197, 194, 194);
+}
+
+.settings_timers label {
+    font-weight: 500;
+    color: rgb(154, 152, 152);
+}
+
+.settings_timers input {
+    max-width: 100px;
+    width: 100%;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: rgb(244, 240, 240);
+    padding: 10px;
+    font-size: 18px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.settings_theme-title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 20px 0;
+    color: rgb(184, 182, 182);
+}
+
+.settings_themes {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.settings_themes p {
+    font-weight: 500;
+}
+
+.theme {
+    width: 100px;
+    height: 80px;
+    /* background-color: red; */
+    border-radius: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#pomo-theme {
+    background-color: rgb(186,73,73);
+}
+
+#short-theme {
+    background-color: rgb(57,112,151);
+}
+
+#long-theme {
+    background-color: rgb(125,83,162);
+}
+
+.form-btn {
+    margin-top: 30px;
+    width: 100%;
+    border: none;
+    background-color: rgb(71, 70, 70);
+    background-color: rgba(0, 0, 0, 0.772);
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}

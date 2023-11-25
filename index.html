@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
     <nav>
         <div class="logo">
             <i class="fa-sharp fa-solid fa-circle-check logo__icon"></i>
             <h1>Pomodoro Timer</h1>
         </div>
-        <button>
+        <button id="settings">
             <i class="fa-sharp fa-solid fa-gear"></i>
             Setting
         </button>
@@ -22,15 +26,21 @@
     <main>
         <div class="categories">
             <div class="timers">
-                <a id="pomodoro-link" href="#"><p id="link">Pomodoro</p></a>
-                <a id="short-break-link" href="#"><p id="link">Short-break</p></a>
-                <a id="long-break-link" href="#"><p id="link">Long-break</p></a>
+                <a id="pomodoro-link" href="#">
+                    <p id="link">Pomodoro</p>
+                </a>
+                <a id="short-break-link" href="#">
+                    <p id="link">Short-break</p>
+                </a>
+                <a id="long-break-link" href="#">
+                    <p id="link">Long-break</p>
+                </a>
             </div>
 
             <div class="timer pomodoro">
                 <p data-timer="start" id="pomo-count" class="countDown"></p>
-                <button type="submit" id="pomodoro-start" class="start">START</button>
-                <button id="pomodoro-pause" class="start" >PAUSE</button>
+                <button type="submit" id="pomodoro-start" class="start pomo-btn">START</button>
+                <button id="pomodoro-pause" class="start pomo-btn">PAUSE</button>
                 <div class="focus-numbers">
                     <strong id="numbers"></strong>
                     <p><i class="fa-regular fa-lightbulb"></i>Time to focus!</p>
@@ -38,8 +48,8 @@
             </div>
             <div class="timer short-break">
                 <p data-timer="start" id="short-count" class="countDown"></p>
-                <button type="submit" id="short-start" class="start">START</button>
-                <button id="short-pause" class="start" >PAUSE</button>
+                <button type="submit" id="short-start" class="start short-btn">START</button>
+                <button id="short-pause" class="start short-btn">PAUSE</button>
                 <div class="focus-numbers">
                     <strong id="numbers-to-short"></strong>
                     <p><i class="fa-solid fa-mug-hot"></i>Time for a break!</p>
@@ -47,15 +57,67 @@
             </div>
             <div class="timer long-break">
                 <p data-timer="start" id="long-count" class="countDown"></p>
-                <button type="submit" id="long-start" class="start">START</button>
-                <button id="long-pause" class="start" >PAUSE</button>
+                <button type="submit" id="long-start" class="start long-btn">START</button>
+                <button id="long-pause" class="start long-btn">PAUSE</button>
                 <div class="focus-numbers">
                     <strong id="numbers-to-long"></strong>
                     <p><i class="fa-solid fa-person-walking"></i>Time for a break!</p>
                 </div>
             </div>
         </div>
+
+        <div class="setting-container">
+            <div class="settings-bg"></div>
+            <div class="settings-wrapper">
+                <div class="settings">
+                    <p>Setting</p>
+                    <i id="close" class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="settings_timer-title">
+                    <i class="fa-solid fa-clock"></i>
+                    <h3>TIMER</h3>
+                </div>
+                <p class="settings_text">Time (minutes)</p>
+                <form>
+                    <div class="settings_timers">
+                        <div class="settings_pomo-timer">
+                            <label for="">Pomodoro</label>
+                            <input id="pomo-input" type="number">
+                        </div>
+                        <div class="settings_short-timer">
+                            <label for="">Short Break</label>
+                            <input id="short-input" type="number">
+                        </div>
+                        <div class="settings_long-timer">
+                            <label for="">Long Break</label>
+                            <input id="long-input" type="number">
+                        </div>
+                    </div>
+
+                    <div class="settings_theme-title">
+                        <i class="fa-solid fa-pen-fancy"></i>
+                        <h3>THEME</h3>
+                    </div>
+                    <div class="settings_themes">
+                        <div class="settings_pomo-theme">
+                            <p>Pomodoro</p>
+                            <div class="theme" id="pomo-theme"></div>
+                        </div>
+                        <div class="settings_short-theme">
+                            <p>Short Break</p>
+                            <div class="theme" id="short-theme"></div>
+                        </div>
+                        <div class="settings_long-theme">
+                            <p>Long Break</p>
+                            <div class="theme" id="long-theme"></div>
+                        </div>
+                    </div>
+                    <button class="form-btn">OK</button>
+                </form>
+            </div>  
+        </div>
     </main>
     <script src="./app.js"></script>
 </body>
+
 </html>
