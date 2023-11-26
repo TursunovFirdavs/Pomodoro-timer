@@ -24,44 +24,46 @@
         <a href="" class='login'>Login</a>
     </nav>
     <main>
-        <div class="categories">
-            <div class="timers">
-                <a id="pomodoro-link" href="#">
-                    <p id="link">Pomodoro</p>
-                </a>
-                <a id="short-break-link" href="#">
-                    <p id="link">Short-break</p>
-                </a>
-                <a id="long-break-link" href="#">
-                    <p id="link">Long-break</p>
-                </a>
-            </div>
+        <div class="container">
+            <div class="categories">
+                <div class="timers">
+                    <a id="pomodoro-link" href="#">
+                        <p id="link">Pomodoro</p>
+                    </a>
+                    <a id="short-break-link" href="#">
+                        <p id="link">Short-break</p>
+                    </a>
+                    <a id="long-break-link" href="#">
+                        <p id="link">Long-break</p>
+                    </a>
+                </div>
 
-            <div class="timer pomodoro">
-                <p data-timer="start" id="pomo-count" class="countDown"></p>
-                <button type="submit" id="pomodoro-start" class="start pomo-btn">START</button>
-                <button id="pomodoro-pause" class="start pomo-btn">PAUSE</button>
-                <div class="focus-numbers">
-                    <strong id="numbers"></strong>
-                    <p><i class="fa-regular fa-lightbulb"></i>Time to focus!</p>
+                <div class="timer pomodoro">
+                    <p data-timer="start" id="pomo-count" class="countDown"></p>
+                    <button type="submit" id="pomodoro-start" class="start pomo-btn">START</button>
+                    <button id="pomodoro-pause" class="start pomo-btn">PAUSE</button>
+                    <div class="focus-numbers">
+                        <strong id="numbers"></strong>
+                        <p><i class="fa-regular fa-lightbulb"></i>Time to focus!</p>
+                    </div>
                 </div>
-            </div>
-            <div class="timer short-break">
-                <p data-timer="start" id="short-count" class="countDown"></p>
-                <button type="submit" id="short-start" class="start short-btn">START</button>
-                <button id="short-pause" class="start short-btn">PAUSE</button>
-                <div class="focus-numbers">
-                    <strong id="numbers-to-short"></strong>
-                    <p><i class="fa-solid fa-mug-hot"></i>Time for a break!</p>
+                <div class="timer short-break">
+                    <p data-timer="start" id="short-count" class="countDown"></p>
+                    <button type="submit" id="short-start" class="start short-btn">START</button>
+                    <button id="short-pause" class="start short-btn">PAUSE</button>
+                    <div class="focus-numbers">
+                        <strong id="numbers-to-short"></strong>
+                        <p><i class="fa-solid fa-mug-hot"></i>Time for a break!</p>
+                    </div>
                 </div>
-            </div>
-            <div class="timer long-break">
-                <p data-timer="start" id="long-count" class="countDown"></p>
-                <button type="submit" id="long-start" class="start long-btn">START</button>
-                <button id="long-pause" class="start long-btn">PAUSE</button>
-                <div class="focus-numbers">
-                    <strong id="numbers-to-long"></strong>
-                    <p><i class="fa-solid fa-person-walking"></i>Time for a break!</p>
+                <div class="timer long-break">
+                    <p data-timer="start" id="long-count" class="countDown"></p>
+                    <button type="submit" id="long-start" class="start long-btn">START</button>
+                    <button id="long-pause" class="start long-btn">PAUSE</button>
+                    <div class="focus-numbers">
+                        <strong id="numbers-to-long"></strong>
+                        <p><i class="fa-solid fa-person-walking"></i>Time for a break!</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,9 +114,18 @@
                             <div class="theme" id="long-theme"></div>
                         </div>
                     </div>
+                    <div class="all-thems">
+                        <div class="orchid color"></div>
+                        <div class="choco color"></div>
+                        <div class="green color"></div>
+                        <div class="red color"></div>
+                        <div class="blue color"></div>
+                        <div class="dark-blue color"></div>
+                        <div class="dark-green color"></div>
+                    </div>
                     <button class="form-btn">OK</button>
                 </form>
-            </div>  
+            </div>
         </div>
     </main>
     <script src="./app.js"></script>

@@ -10,7 +10,13 @@
 
 body {
   /* background-color: rgb(186,73,73); */
+  background-color: darkgreen;
   transition: 0.8s;
+}
+
+.container {
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .link, a {
@@ -19,12 +25,12 @@ body {
 }
 
 nav {
-    max-width: 90vw;
+    max-width: 1200px;
     margin: auto;
     display: flex;
     gap: 20px;
     align-items: center;
-    padding: 15px 5px;
+    padding: 15px 10px;
     margin-bottom: 100px;
 }
 
@@ -86,6 +92,8 @@ nav button {
     justify-content: space-around;
     max-width: 400px;
     margin: auto;
+    /* padding: 0 10px; */
+    box-sizing: border-box;
 }
 
 .timers a {
@@ -110,6 +118,7 @@ a[data = active] {
     font-weight: 700;
     font-family: 'Nunito', sans-serif;
     margin: 10px 0;
+    padding: 0 10px;
 }
 
 .start {
@@ -161,8 +170,9 @@ a[data = active] {
 .setting-container {
     display: none;
     max-width: 100vw;
+    margin: auto;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.185);
     position: absolute;
     top: 0;
@@ -170,9 +180,9 @@ a[data = active] {
 
 .settings-wrapper {
     position: absolute;
-    top: 50%;
+    top: 30px;
     left: 50%;
-    transform: translateX(-50%) translateY(-60%);
+    transform: translateX(-50%);
     background-color: #fff;
     max-width: 400px;
     width: 100%;
@@ -300,6 +310,48 @@ a[data = active] {
     background-color: rgb(125,83,162);
 }
 
+.all-thems {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    display: none;
+}
+
+.color {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.orchid {
+    background-color: rgb(125,83,162);
+}
+
+.choco {
+    background-color: chocolate;
+}
+
+.green {
+    background-color: seagreen;
+}
+
+.red {
+    background-color: rgb(186,73,73);
+}
+
+.blue {
+    background-color: rgb(57,112,151);
+}
+
+.dark-green {
+    background-color: darkgreen;
+}
+
+.dark-blue {
+    background-color: navy;
+}
+
 .form-btn {
     margin-top: 30px;
     width: 100%;
@@ -311,4 +363,64 @@ a[data = active] {
     border-radius: 5px;
     font-size: 20px;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    nav {
+        gap: 10px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    nav button {
+        font-size: 14px;
+    }
+
+    .login {
+        font-size: 14px;
+    }
+
+    .timers {
+        max-width: 320px;
+    }
+
+    .timers a {
+        font-size: 15px;
+        padding: 4px 10px;
+    }
+    
+    .countDown {
+        font-size: 90px;
+    }
+
+    .start {
+        font-size: 24px;
+        font-weight: 500;
+        padding: 8px 30px;
+    }
+
+    .focus-numbers > strong {
+        font-size: 15px;
+    }
+
+    .focus-numbers > p {
+        font-size: 16px;
+    }
+
+    .settings-wrapper {
+        max-width: 330px;
+        width: 100%;
+    }
+
+    .settings_timers input {
+        max-width: 85px;
+        width: 100%;
+    }
+
+    .theme {
+        width: 85px;
+        height: 70px;
+    }
 }

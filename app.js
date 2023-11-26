@@ -19,9 +19,9 @@ const focusNumberInShortBreak = document.querySelector('#numbers-to-short')
 const focusNumberInLongBreak = document.querySelector('#numbers-to-long')
 
 pomodoroLink.addEventListener('click', () => {
-    document.querySelector('body').style.backgroundColor = 'rgb(186,73,73)'
-    pomodoroStartBtn.style.color = 'rgb(186,73,73)'
-    pomoPauseBtn.style.color = 'rgb(186,73,73)'
+    document.querySelector('body').style.backgroundColor = localStorage.getItem('pomo-theme') ? localStorage.getItem('pomo-theme') : 'rgb(186,73,73)'
+    pomodoroStartBtn.style.color = localStorage.getItem('pomo-theme') ? localStorage.getItem('pomo-theme') : 'rgb(186,73,73)'
+    pomoPauseBtn.style.color = localStorage.getItem('pomo-theme') ? localStorage.getItem('pomo-theme') : 'rgb(186,73,73)'
     pomoWrapper.style.display = 'block'
     shortWrapper.style.display = 'none'
     longWrapper.style.display = 'none'
@@ -48,9 +48,9 @@ pomodoroLink.addEventListener('click', () => {
 })
 
 shortBreakLink.addEventListener('click', () => {
-    document.querySelector('body').style.backgroundColor = 'rgb(57,112,151)'
-    shortBreakStartBtn.style.color = 'rgb(57,112,151)'
-    shortPauseBtn.style.color = 'rgb(57,112,151)'
+    document.querySelector('body').style.backgroundColor = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'
+    shortBreakStartBtn.style.color = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'
+    shortPauseBtn.style.color = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'
     shortBreakStartBtn.style.display = 'inline-block'
     shortPauseBtn.style.display = 'none'
     pomoWrapper.style.display = 'none'
@@ -72,9 +72,9 @@ shortBreakLink.addEventListener('click', () => {
 })
 
 longBreakLink.addEventListener('click', () => {
-    document.querySelector('body').style.backgroundColor = 'rgb(125,83,162)'
-    longBreakStartBtn.style.color = 'rgb(125,83,162)'
-    longPauseBtn.style.color = 'rgb(125,83,162)'
+    document.querySelector('body').style.backgroundColor = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'
+    longBreakStartBtn.style.color = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'
+    longPauseBtn.style.color = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'
     longBreakStartBtn.style.display = 'inline-block'
     longPauseBtn.style.display = 'none'
     pomoWrapper.style.display = 'none'
@@ -100,9 +100,9 @@ if(localStorage.getItem('active-link') === 'pomodoro'){
     pomoWrapper.style.display = 'block'
     shortWrapper.style.display = 'none'
     longWrapper.style.display = 'none'
-    document.querySelector('body').style.backgroundColor = 'rgb(186,73,73)'
-    pomodoroStartBtn.style.color = 'rgb(186,73,73)'
-    pomoPauseBtn.style.color = 'rgb(186,73,73)'
+    document.querySelector('body').style.backgroundColor = localStorage.getItem('pomo-theme') ? localStorage.getItem('pomo-theme') : 'rgb(186,73,73)'
+    pomodoroStartBtn.style.color = localStorage.getItem('pomo-theme') ? localStorage.getItem('pomo-theme') : 'rgb(186,73,73)'
+    pomoPauseBtn.style.color = localStorage.getItem('pomo-theme') ? localStorage.getItem('pomo-theme') : 'rgb(186,73,73)'
 }
     
 else if(localStorage.getItem('active-link') === 'short-break'){
@@ -110,28 +110,28 @@ else if(localStorage.getItem('active-link') === 'short-break'){
     shortWrapper.style.display = 'block'
     pomoWrapper.style.display = 'none'
     longWrapper.style.display = 'none'
-    document.querySelector('body').style.backgroundColor = 'rgb(57,112,151)'
-    shortBreakStartBtn.style.color = 'rgb(57,112,151)'
-    shortPauseBtn.style.color = 'rgb(57,112,151)'
+    document.querySelector('body').style.backgroundColor = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'
+    shortBreakStartBtn.style.color = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'
+    shortPauseBtn.style.color = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'
 }
 else if(localStorage.getItem('active-link') === 'long-break'){
     longBreakLink.setAttribute('data', 'active')
     longWrapper.style.display = 'block'
     pomoWrapper.style.display = 'none'
     shortWrapper.style.display = 'none'
-    document.querySelector('body').style.backgroundColor = 'rgb(125,83,162)'
-    longBreakStartBtn.style.color = 'rgb(125,83,162)'
-    longPauseBtn.style.color = 'rgb(125,83,162)'
+    document.querySelector('body').style.backgroundColor = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'
+    longBreakStartBtn.style.color = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'
+    longPauseBtn.style.color = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'
 }
 else {
     pomodoroLink.setAttribute('data', 'active')
     pomoWrapper.style.display = 'block'
     shortWrapper.style.display = 'none'
     longWrapper.style.display = 'none'
-    document.querySelector('body').style.backgroundColor = 'rgb(186,73,73)'
+    // document.querySelector('body').style.backgroundColor = 'rgb(186,73,73)'
     document.querySelector('body').style.transition = 'none'
-    pomodoroStartBtn.style.color = 'rgb(186,73,73)'
-    pomoPauseBtn.style.color = 'rgb(186,73,73)'
+    pomodoroStartBtn.style.color = localStorage.getItem('pomo-theme') ? localStorage.getItem('pomo-theme') : 'rgb(186,73,73)'
+    pomoPauseBtn.style.color = localStorage.getItem('pomo-theme') ? localStorage.getItem('pomo-theme') : 'rgb(186,73,73)'
 }
 
 let pomoStartingMinute = +localStorage.getItem('changed-pomo-str') > 0 ? +localStorage.getItem('changed-pomo-str') : 25
@@ -197,7 +197,7 @@ pomodoroStartBtn.addEventListener('click', () => {
                 number++
                 pomoWrapper.style.display = 'none'
                 shortWrapper.style.display = 'block'
-                document.querySelector('body').style.backgroundColor = 'rgb(57,112,151)'
+                document.querySelector('body').style.backgroundColor = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'
                 shortBreakStartBtn.style.color = 'rgb(125,83,162)'
                 shortPauseBtn.style.color = 'rgb(125,83,162)'
                 shortStartingMinute = +localStorage.getItem('changed-short-str') > 0 ? +localStorage.getItem('changed-short-str') : 5
@@ -212,7 +212,7 @@ pomodoroStartBtn.addEventListener('click', () => {
                 if(number % 4 == 0) {
                     longWrapper.style.display = 'block'
                     shortWrapper.style.display = 'none'
-                    document.querySelector('body').style.backgroundColor = 'rgb(125,83,162)'
+                    document.querySelector('body').style.backgroundColor = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'
                     longBreakStartBtn.style.color = 'rgb(125,83,162)'
                     longPauseBtn.style.color = 'rgb(125,83,162)'
                     shortBreakLink.removeAttribute('data')
@@ -370,7 +370,19 @@ const form = document.querySelector('form')
 const pomoInput = document.querySelector('#pomo-input')
 const shortInput = document.querySelector('#short-input')
 const longInput = document.querySelector('#long-input')
-
+const settingThemeWrapper = document.querySelector('.settings_themes')
+const allThemes = document.querySelector('.all-thems')
+const pomoTheme = document.querySelector('#pomo-theme')
+const shortTheme = document.querySelector('#short-theme')
+const longTheme = document.querySelector('#long-theme')
+// colors
+const orchidColor = document.querySelector('.orchid')
+const chocoColor = document.querySelector('.choco')
+const redColor = document.querySelector('.red')
+const blueColor = document.querySelector('.blue')
+const darkBluedColor = document.querySelector('.dark-blue')
+const darkGreenColor = document.querySelector('.dark-green')
+const greenColor = document.querySelector('.green')
 
 settingsBtn.addEventListener('click', () => {
     settingContainer.style.display = 'block'
@@ -406,7 +418,8 @@ form.addEventListener('submit', (e) => {
     shortStartingMinute = +localStorage.getItem('changed-short-str') > 0 ? +localStorage.getItem('changed-short-str') : 5
     shortSecond = localStorage.getItem('overall-short-second') ? +localStorage.getItem('overall-short-second')-1 : (shortStartingMinute * 60) -1
     shortCount.innerHTML = `${shortStartingMinute < 10 ? '0' + shortStartingMinute : shortStartingMinute} : 00`
-
+    
+    console.log(allThemes.getAttribute('data-theme'));
     longPauseBtn.style.display = 'none'
     longBreakStartBtn.style.display = 'inline-block'
     longStartingMinute = +localStorage.getItem('changed-long-str') > 0 ? +localStorage.getItem('changed-long-str') : 10
@@ -414,4 +427,140 @@ form.addEventListener('submit', (e) => {
     longCount.innerHTML = `${longStartingMinute < 10 ? '0' + longStartingMinute : longStartingMinute} : 00`
 
     settingContainer.style.display = 'none'
+
+    // to change without refresh
+    if(localStorage.getItem('active-link') === 'pomodoro' && localStorage.getItem('pomo-theme')) {
+        document.querySelector('body').style.backgroundColor = localStorage.getItem('pomo-theme') ? localStorage.getItem('pomo-theme') : 'rgb(186,73,73)'
+        pomodoroStartBtn.style.color = localStorage.getItem('pomo-theme') ? localStorage.getItem('pomo-theme') : 'rgb(186,73,73)'
+        pomoPauseBtn.style.color = localStorage.getItem('pomo-theme') ? localStorage.getItem('pomo-theme') : 'rgb(186,73,73)'    
+    }
+    if(localStorage.getItem('active-link') === 'short-break' && localStorage.getItem('short-theme')) {
+        document.querySelector('body').style.backgroundColor = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'
+        shortBreakStartBtn.style.color = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'
+        shortPauseBtn.style.color = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'    
+    }
+    if(localStorage.getItem('active-link') === 'long-break' && localStorage.getItem('long-theme')) {
+        document.querySelector('body').style.backgroundColor = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'
+        longBreakStartBtn.style.color = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'
+        longPauseBtn.style.color = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'    
+    }
 })
+
+pomoTheme.addEventListener('click', () => {
+    settingThemeWrapper.style.display = 'none'
+    allThemes.style.display = 'flex'
+    allThemes.setAttribute('data-theme', 'pomo')
+})
+
+shortTheme.addEventListener('click', () => {
+    settingThemeWrapper.style.display = 'none'
+    allThemes.style.display = 'flex'
+    allThemes.setAttribute('data-theme', 'short')
+})
+
+longTheme.addEventListener('click', () => {
+    settingThemeWrapper.style.display = 'none'
+    allThemes.style.display = 'flex'
+    allThemes.setAttribute('data-theme', 'long')
+})
+
+
+ 
+orchidColor.addEventListener('click', () => {
+    if(allThemes.getAttribute('data-theme') === 'pomo'){
+        localStorage.setItem('pomo-theme', 'rgb(125,83,162)')
+    }
+    if(allThemes.getAttribute('data-theme') === 'short'){
+        localStorage.setItem('short-theme', 'rgb(125,83,162)')
+    }
+    if(allThemes.getAttribute('data-theme') === 'long'){
+        localStorage.setItem('long-theme', 'rgb(125,83,162)')
+    }
+    settingThemeWrapper.style.display = 'flex'
+    allThemes.style.display = 'none'
+})
+
+chocoColor.addEventListener('click', () => {
+    if(allThemes.getAttribute('data-theme') === 'pomo'){
+        localStorage.setItem('pomo-theme', 'chocolate')
+    }
+    if(allThemes.getAttribute('data-theme') === 'short'){
+        localStorage.setItem('short-theme', 'chocolate')
+    }
+    if(allThemes.getAttribute('data-theme') === 'long'){
+        localStorage.setItem('long-theme', 'chocolate')
+    }
+    settingThemeWrapper.style.display = 'flex'
+    allThemes.style.display = 'none'
+})
+
+redColor.addEventListener('click', () => {
+    if(allThemes.getAttribute('data-theme') === 'pomo'){
+        localStorage.setItem('pomo-theme', 'rgb(186,73,73)')
+    }
+    if(allThemes.getAttribute('data-theme') === 'short'){
+        localStorage.setItem('short-theme', 'rgb(186,73,73)')
+    }
+    if(allThemes.getAttribute('data-theme') === 'long'){
+        localStorage.setItem('long-theme', 'rgb(186,73,73)')
+    }
+    settingThemeWrapper.style.display = 'flex'
+    allThemes.style.display = 'none'
+})
+
+blueColor.addEventListener('click', () => {
+    if(allThemes.getAttribute('data-theme') === 'pomo'){
+        localStorage.setItem('pomo-theme', 'rgb(57,112,151)')
+    }
+    if(allThemes.getAttribute('data-theme') === 'short'){
+        localStorage.setItem('short-theme', 'rgb(57,112,151)')
+    }
+    if(allThemes.getAttribute('data-theme') === 'long'){
+        localStorage.setItem('long-theme', 'rgb(57,112,151)')
+    }
+    settingThemeWrapper.style.display = 'flex'
+    allThemes.style.display = 'none'
+})
+
+darkBluedColor.addEventListener('click', () => {
+    if(allThemes.getAttribute('data-theme') === 'pomo'){
+        localStorage.setItem('pomo-theme', 'navy')
+    }
+    if(allThemes.getAttribute('data-theme') === 'short'){
+        localStorage.setItem('short-theme', 'navy')
+    }
+    if(allThemes.getAttribute('data-theme') === 'long'){
+        localStorage.setItem('long-theme', 'navy')
+    }
+    settingThemeWrapper.style.display = 'flex'
+    allThemes.style.display = 'none'
+})
+
+darkGreenColor.addEventListener('click', () => {
+    if(allThemes.getAttribute('data-theme') === 'pomo'){
+        localStorage.setItem('pomo-theme', 'darkgreen')
+    }
+    if(allThemes.getAttribute('data-theme') === 'short'){
+        localStorage.setItem('short-theme', 'darkgreen')
+    }
+    if(allThemes.getAttribute('data-theme') === 'long'){
+        localStorage.setItem('long-theme', 'darkgreen')
+    }
+    settingThemeWrapper.style.display = 'flex'
+    allThemes.style.display = 'none'
+})
+
+greenColor.addEventListener('click', () => {
+    if(allThemes.getAttribute('data-theme') === 'pomo'){
+        localStorage.setItem('pomo-theme', 'seagreen')
+    }
+    if(allThemes.getAttribute('data-theme') === 'short'){
+        localStorage.setItem('short-theme', 'seagreen')
+    }
+    if(allThemes.getAttribute('data-theme') === 'long'){
+        localStorage.setItem('long-theme', 'seagreen')
+    }
+    settingThemeWrapper.style.display = 'flex'
+    allThemes.style.display = 'none'
+})
+
