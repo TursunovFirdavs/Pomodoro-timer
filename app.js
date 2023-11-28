@@ -198,8 +198,8 @@ pomodoroStartBtn.addEventListener('click', () => {
                 pomoWrapper.style.display = 'none'
                 shortWrapper.style.display = 'block'
                 document.querySelector('body').style.backgroundColor = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'
-                shortBreakStartBtn.style.color = 'rgb(125,83,162)'
-                shortPauseBtn.style.color = 'rgb(125,83,162)'
+                shortBreakStartBtn.style.color = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'
+                shortPauseBtn.style.color = localStorage.getItem('short-theme') ? localStorage.getItem('short-theme') : 'rgb(57,112,151)'
                 shortStartingMinute = +localStorage.getItem('changed-short-str') > 0 ? +localStorage.getItem('changed-short-str') : 5
                 shortSecond = (shortStartingMinute * 60) -1
                 shortCount.innerHTML = `${shortStartingMinute < 10 ? '0' + shortStartingMinute : shortStartingMinute} : 00`
@@ -213,8 +213,8 @@ pomodoroStartBtn.addEventListener('click', () => {
                     longWrapper.style.display = 'block'
                     shortWrapper.style.display = 'none'
                     document.querySelector('body').style.backgroundColor = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'
-                    longBreakStartBtn.style.color = 'rgb(125,83,162)'
-                    longPauseBtn.style.color = 'rgb(125,83,162)'
+                    longBreakStartBtn.style.color = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'
+                    longPauseBtn.style.color = localStorage.getItem('long-theme') ? localStorage.getItem('long-theme') : 'rgb(125,83,162)'
                     shortBreakLink.removeAttribute('data')
                     longBreakLink.setAttribute('data', 'active')
                     localStorage.setItem('active-link', 'long-break')
@@ -564,3 +564,11 @@ greenColor.addEventListener('click', () => {
     allThemes.style.display = 'none'
 })
 
+let hour = new Date().getHours()
+let minute = new Date().getMinutes()
+console.log(minute);
+
+if(hour == 24 && minute == 0){
+    localStorage.removeItem('focus-number')
+}
+console.log(hour);
