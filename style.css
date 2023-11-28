@@ -368,7 +368,7 @@ a[data = active] {
 @media only screen and (max-width: 600px) {
     nav {
         gap: 10px;
-        margin-bottom: 200px;
+        margin-bottom: 150px;
     }
 
     h1 {
